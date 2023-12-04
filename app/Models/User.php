@@ -21,6 +21,27 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile',
+        'district',
+        'approved',
+        'approve_code',
+    ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    protected $attributes = [
+        'approved' => "0",
+        'role' => "user",
+        'approve_code' => "123456",
+        'district' => "kegalle",
     ];
 
     /**
